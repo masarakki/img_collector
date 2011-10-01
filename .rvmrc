@@ -1,0 +1,6 @@
+ruby="ruby-1.9.2-p290@img_collector"
+if [[ -s $HOME/.rvm/environments/$ruby ]]; then
+   . "$HOME/.rvm/environments/$ruby"
+else
+  rvm --create use $ruby
+fi
