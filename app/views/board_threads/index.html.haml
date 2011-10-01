@@ -1,0 +1,30 @@
+-#{include file="_add_thread_form.tpl"}
+-#{include file="_search_form.tpl"}
+
+%p
+  %a{href:"img_list.php"}show all images
+  %a{href:"ng_list.php"}>show NG users list
+
+%p.center
+-#	{if $pager.hasNew}
+-#		<span>{prev_page text="<- newer"}</span>
+-#	{else}
+-#		<span style="visibility:hidden">&lt;- newer</span>
+-#	{/if}
+-#	| <a href="?index=0">[top]</a> |
+-#	{if $pager.hasOld}
+-#		<span>{next_page text="older ->"}</span>
+-#	{else}
+-#		<span style="visibility:hidden">older -&gt;</span>
+-#	{/if}
+
+-#{if isset($writers)}
+-#	{foreach from=$writers item=writer}
+-#		<a href="writer.php?name={$writer.writer|escape}">{$writer.writer|escape}({$writer.cnt|escape})</a>
+-#	{/foreach}
+-#{/if}
+-#{$smarty.capture.pager}
+%table
+  %caption スレッド一覧
+  = render 'board_threads'
+-#{$smarty.capture.page}

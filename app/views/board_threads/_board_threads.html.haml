@@ -1,0 +1,19 @@
+%thead
+  %tr
+    %th id
+    %th title
+    %th uri
+    %th get
+    %th queue
+    %th 最終アクセス
+  %tr
+    %td all
+    %td ---
+    %td
+      %a{href: "img_list.php"} [success]
+    %td {$cnt.all.get}
+    %td
+      %a{href: "img_list.php?only=0"} {$cnt.all.queue}
+    %td ---
+%tbody
+  = render @board_threads

@@ -1,5 +1,5 @@
 ImageCollector::Application.routes.draw do
-  resources :board_threads
+  resources :board_threads, :only => [:index, :create, :show, :destroy]
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
