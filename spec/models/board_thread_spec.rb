@@ -18,6 +18,7 @@ describe BoardThread do
   end
   subject { BoardThread.new @attributes }
   its(:valid?) { should be_true }
+  its(:dat_file) { should eq('http://localhost/board_001/dat/thread_001.dat') }
 
   context :not_unique do
     before { BoardThread.new(@attributes).save }
