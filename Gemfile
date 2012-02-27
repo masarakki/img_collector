@@ -2,7 +2,7 @@ source 'http://rubygems.org'
 
 gem 'rails', '3.2.1'
 gem 'haml'
-
+gem 'twitter-bootstrap-rails'
 group :production do
   gem 'mysql2'
 end
