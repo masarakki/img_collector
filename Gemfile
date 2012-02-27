@@ -15,6 +15,7 @@ group :test, :development do
   gem "cover_me"
   gem "libnotify"
   gem "guard-spork"
+  gem "guard-rspec"
 end
 
 group :assets do
