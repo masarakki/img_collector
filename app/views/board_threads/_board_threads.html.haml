@@ -1,11 +1,12 @@
 %thead
   %tr
-    %th id
-    %th title
-    %th uri
-    %th get
-    %th queue
-    %th 最終アクセス
+    %th ID
+    %th Title
+    %th URL
+    %th Got
+    %th Queued
+    %th LastAccesed
+%tbody
   %tr
     %td all
     %td ---
@@ -15,5 +16,4 @@
     %td
       %a{href: "img_list.php?only=0"} {$cnt.all.queue}
     %td ---
-%tbody
   = render @board_threads

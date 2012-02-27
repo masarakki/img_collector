@@ -1,22 +1,25 @@
--#{include file="_add_thread_form.tpl"}
--#{include file="_search_form.tpl"}
+.well
+  %form.form-inline.span6
+    %input.span4{:placeholder => "http://"}
+    %submit.btn
+      %i.icon-plus
+      Watch URL
+  %form.form-search.span4.offset1
+    %input.input-short.search-query{:placeholder => "Word or ID"}
+    %submit.btn
+      %i.icon-search
+      Search
 
-%p
-  %a{href:"img_list.php"}show all images
-  %a{href:"ng_list.php"}>show NG users list
-
-%p.center
--#	{if $pager.hasNew}
--#		<span>{prev_page text="<- newer"}</span>
--#	{else}
--#		<span style="visibility:hidden">&lt;- newer</span>
--#	{/if}
--#	| <a href="?index=0">[top]</a> |
--#	{if $pager.hasOld}
--#		<span>{next_page text="older ->"}</span>
--#	{else}
--#		<span style="visibility:hidden">older -&gt;</span>
--#	{/if}
+.pagination.pagination-centered
+  %ul
+    %li.previous
+      %a << older
+    %li
+      = link_to :root do
+        %i.icon-home
+        TOP
+    %li.next
+      %a newer >>
 
 -#{if isset($writers)}
 -#	{foreach from=$writers item=writer}
@@ -24,7 +27,10 @@
 -#	{/foreach}
 -#{/if}
 -#{$smarty.capture.pager}
-%table
-  %caption スレッド一覧
-  = render 'board_threads'
--#{$smarty.capture.page}
+
+.row
+  .span12
+    %table.table.table-striped.table-condensed
+      %caption Threads
+      = render 'board_threads'
+  -#{$smarty.capture.page}
