@@ -24,8 +24,8 @@ ActiveRecord::Schema.define(:version => 20111001205939) do
     t.integer  "new_res",       :default => 0
     t.string   "last_modified", :default => ""
     t.datetime "accessed_at"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
   end
 
   add_index "board_threads", ["accessed_at"], :name => "index_board_threads_on_accessed_at"
