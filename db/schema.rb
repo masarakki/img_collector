@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111001205939) do
+ActiveRecord::Schema.define(:version => 20120228173517) do
 
   create_table "board_threads", :force => true do |t|
     t.string   "title",                            :null => false
@@ -30,5 +30,21 @@ ActiveRecord::Schema.define(:version => 20111001205939) do
 
   add_index "board_threads", ["accessed_at"], :name => "index_board_threads_on_accessed_at"
   add_index "board_threads", ["hostname", "board_key", "thread_key"], :name => "thread_index", :unique => true
+
+  create_table "image_urls", :force => true do |t|
+    t.integer  "board_thread_id",                    :null => false
+    t.string   "url"
+    t.string   "uploader_type",                      :null => false
+    t.boolean  "finished",        :default => false
+    t.string   "writer"
+    t.string   "body"
+    t.datetime "accessed_at"
+    t.datetime "created_at",                         :null => false
+    t.datetime "updated_at",                         :null => false
+  end
+
+  add_index "image_urls", ["board_thread_id"], :name => "index_image_urls_on_board_thread_id"
+  add_index "image_urls", ["finished"], :name => "index_image_urls_on_finished"
+  add_index "image_urls", ["uploader_type", "finished"], :name => "index_image_urls_on_uploader_type_and_finished"
 
 end
