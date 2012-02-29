@@ -24,4 +24,16 @@ describe BoardThread do
     before { BoardThread.new(@attributes).save }
     its(:valid?) { should be_false }
   end
+
+  describe :url= do
+    before do
+      @board = BoardThread.new
+      @board.url = "http://kilauea.bbspink.com/test/read.cgi/megami/1330282190/"
+    end
+    subject { @board }
+
+    its(:hostname) { should == 'kilauea.bbspink.com' }
+    its(:board_key) { should == 'megami' }
+    its(:thread_key) { should == '1330282190' }
+  end
 end
