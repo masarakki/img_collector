@@ -3,6 +3,8 @@ source 'http://rubygems.org'
 gem 'rails', '3.2.1'
 gem 'haml-rails'
 gem 'twitter-bootstrap-rails'
+gem 'mona'
+
 group :production do
   gem 'mysql2'
 end

@@ -23,6 +23,6 @@ describe BoardThread do
 
     its(:hostname) { should == 'kilauea.bbspink.com' }
     its(:board_key) { should == 'megami' }
-    its(:thread_key) { should == '1330282190' }
+    its(:thread_key) { should == 1330282190 }
   end
 end

@@ -4,18 +4,30 @@ class BoardThread < ActiveRecord::Base
   end
   validates :thread_key, :uniqueness => {:scope => [:hostname, :board_key]}
 
+  before_validation do
+    if !title.present?
+      mona_thread.reload
+      self.title = mona_thread.title
+    end
+  end
+
   def dat_file
     "http://#{hostname}/#{board_key}/dat/#{thread_key}.dat"
   end
 
   def url=(url)
-    matched = url.match /http:\/\/(\w.+)\/test\/read.cgi\/(\w+)\/(\d+)\//
-    self.hostname = matched[1]
-    self.board_key = matched[2]
-    self.thread_key = matched[3]
+    @mona_thread = Mona::Thread.from_url(url)
+    self.hostname = mona_thread.board.host
+    self.board_key = mona_thread.board.board
+    self.thread_key = mona_thread.id
   end
 
   def url
-    "http://#{hostname}/#{board_key}/#{thread_key}" if hostname.present? and board_key.present? and thread_key.present?
+    "http://#{hostname}/test/read.cgi/#{board_key}/#{thread_key}/" if hostname.present? and board_key.present? and thread_key.present?
+  end
+
+  private
+  def mona_thread
+    @mona_thread ||= Mona::Thread.from_url(url)
   end
 end
