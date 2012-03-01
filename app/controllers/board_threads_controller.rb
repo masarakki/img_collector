@@ -31,7 +31,7 @@ class BoardThreadsController < ApplicationController
         format.html { redirect_to @board_thread, notice: 'Board thread was successfully created.' }
         format.json { render json: @board_thread, status: :created, location: @board_thread }
       else
-        format.html { render action: "index" }
+        format.html { redirect_to :board_threads }
         format.json { render json: @board_thread.errors, status: :unprocessable_entity }
       end
     end

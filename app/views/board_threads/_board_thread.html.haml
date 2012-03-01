@@ -1,11 +1,15 @@
 %tr
-  %td {if $thread.is_finished!=0}class="err"{/if}>{$thread.id}
-  %td @thread.title
   %td
-    %a{href: "view.php?id={$thread.id|escape}&amp;cnt={$cnt[$thread.id].get}&amp;only=2"} [success]
+    %span{:class => board_thread.finished? ? '' : 'err'}
+      = board_thread.id
+  %td
+    = board_thread.title
+  %td
+    = link_to '[success]', board_thread
     %a{href: "view.php?id={$thread.id|escape}&amp;cnt={$cnt[$thread.id].get}&amp;only=0,2"} [get?]
     %a{href: "view.php?id={$thread.id|escape}&amp;cnt={$cnt[$thread.id].get}&amp;only=0,1,2"} [all]
-    %a{href: "{$thread.uri}"} [thread]
+    = link_to '[thread]', board_thread.url
   %td {$cnt[$thread.id].get|default:0}
   %td {$cnt[$thread.id].queue|default:0}
-  %td {$thread.accessed_at|escape}
+  %td
+    = board_thread.accessed_at || '---'
