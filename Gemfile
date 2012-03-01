@@ -16,6 +16,7 @@ group :test, :development do
   gem "libnotify"
   gem "guard-spork"
   gem "guard-rspec"
+  gem 'factory_girl_rails'
 end
 
 group :assets do
