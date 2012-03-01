@@ -4,7 +4,7 @@ class BoardThread < ActiveRecord::Base
   end
   validates :thread_key, :uniqueness => {:scope => [:hostname, :board_key]}
 
-  before_validation do
+  before_validation :on => :create do
     if !title.present?
       mona_thread.reload
       self.title = mona_thread.title

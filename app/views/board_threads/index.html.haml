@@ -1,7 +1,7 @@
 .well
-  %form.form-inline.span6
-    %input.span4{:placeholder => "http://"}
-    %submit.btn
+  = form_for BoardThread.new, :html => {:class => 'form-inline span6'} do |f|
+    = f.text_field :url, {:class => 'span4', :placeholder => 'http://'}
+    = button_tag :type => :submit, :class => 'btn' do
       %i.icon-plus
       Watch URL
   %form.form-search.span4.offset1
