@@ -4,6 +4,8 @@ gem 'rails', '3.2.1'
 gem 'haml-rails'
 gem 'twitter-bootstrap-rails'
 gem 'mona'
+gem 'curb'
+gem 'nokogiri'
 
 group :production do
   gem 'mysql2'
