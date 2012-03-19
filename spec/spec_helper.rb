@@ -1,3 +1,4 @@
+
 require 'rubygems'
 require 'spork'
 #uncomment the following line to use spork with the debugger
@@ -73,4 +74,16 @@ RSpec.configure do |config|
   # examples within a transaction, remove the following line or assign false
   # instead of true.
   config.use_transactional_fixtures = true
+end
+
+def nokogiri(*filenames)
+  Nokogiri::HTML(sample_file(*filenames))
+end
+
+def sample_file(*filenames)
+  File.read(sample_file_path(*filenames))
+end
+
+def sample_file_path(*filenames)
+  File.join(Rails.root, 'spec', 'samples', *filenames)
 end

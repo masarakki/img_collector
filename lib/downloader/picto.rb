@@ -15,8 +15,8 @@ class Downloader::Picto < Downloader::Base
         curl.headers = headers('Referer' => url)
         curl.cookies = cookies
         curl.follow_location = true
-        curl.on_body do |data|
-          responses[image_url] << data
+        curl.on_complete do |ch|
+          responses[image_url] << ch.body_str
         end
       end
       m.add(c)

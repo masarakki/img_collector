@@ -13,7 +13,6 @@ class Downloader::Base
         c.enable_cookies = true
       end
       @cookies = response.cookies
-      p response.header_str
       @body = Nokogiri::HTML(response.body_str)
     end
     @body
