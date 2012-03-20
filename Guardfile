@@ -13,7 +13,7 @@ guard 'spork' do
   watch(%r{features/support/}) { :cucumber }
 end
 
-guard 'rspec', :cli => "--drb" do
+guard 'rspec', :cli => "--drb --colour --format nested" do
 end
 
 guard 'rspec', :version => 2 do
