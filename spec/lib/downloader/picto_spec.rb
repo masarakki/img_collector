@@ -10,4 +10,10 @@ describe Downloader::Picto do
     end
     its(:images) { should == ['http://j.pic.to/2wqvw-1-89cb.jpg'] }
   end
+  context :expired do
+    before do
+      pending
+    end
+    its(:images) { should == [] }
+  end
 end

@@ -1,6 +1,8 @@
 
 require 'rubygems'
 require 'spork'
+require 'kconv'
+
 #uncomment the following line to use spork with the debugger
 #require 'spork/ext/ruby-debug'
 
@@ -77,7 +79,7 @@ RSpec.configure do |config|
 end
 
 def nokogiri(*filenames)
-  Nokogiri::HTML(sample_file(*filenames))
+  Nokogiri::HTML(sample_file(*filenames).toutf8)
 end
 
 def sample_file(*filenames)
