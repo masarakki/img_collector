@@ -1,6 +1,1 @@
-ruby="ruby-1.9.3-p0@img_collector"
-if [[ -s $HOME/.rvm/environments/$ruby ]]; then
-   . "$HOME/.rvm/environments/$ruby"
-else
-  rvm --create use $ruby
-fi
+rvm use --create 1.9.3@img_collector
