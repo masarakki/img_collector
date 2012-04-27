@@ -22,6 +22,7 @@ group :test, :development do
   gem "guard-rspec"
   gem "guard-rails"
   gem 'factory_girl_rails'
+  gem "guard-livereload"
 end
 
 group :assets do
