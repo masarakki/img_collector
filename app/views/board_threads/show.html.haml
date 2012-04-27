@@ -1,3 +1,16 @@
-%p#notice
-  = notice
+%h1
+  = @board_thread.title
+%p
+  url:
+  = link_to @board_thread.url
 
+- @board_thread.image_urls.each do |image_url|
+  %p
+    = "#{image_url.id}:"
+    %strong
+      = image_url.writer
+  %p
+    = image_url.body
+
+%p
+  = link_to '[Back]', :board_threads
