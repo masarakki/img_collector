@@ -15,10 +15,12 @@ guard 'spork' do
   watch(%r{features/support/}) { :cucumber }
 end
 
-guard 'rspec', :cli => "--drb --colour --format nested" do
+guard 'rails', :port => 3003, :start_on_start => true, :daemon => true do
+  watch('Gemfile.lock')
+  watch(%r{^(config|lib)/.*})
 end
 
-guard 'rspec', :version => 2 do
+guard 'rspec', :cli => "--drb --colour --format nested", :version => 2 do
   watch(%r{^spec/.+_spec\.rb$})
   watch(%r{^lib/(.+)\.rb$})     { |m| "spec/lib/#{m[1]}_spec.rb" }
   watch('spec/spec_helper.rb')  { "spec" }
@@ -39,4 +41,3 @@ guard 'rspec', :version => 2 do
   # Capybara request specs
   watch(%r{^app/views/(.+)/.*\.(erb|haml)$})          { |m| "spec/requests/#{m[1]}_spec.rb" }
 end
-

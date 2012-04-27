@@ -20,6 +20,7 @@ group :test, :development do
   gem "libnotify"
   gem "guard-spork"
   gem "guard-rspec"
+  gem "guard-rails"
   gem 'factory_girl_rails'
 end
 
