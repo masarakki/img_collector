@@ -2,6 +2,8 @@
 # A sample Guardfile
 # More info at https://github.com/guard/guard#readme
 
+require 'active_support/inflector'
+
 guard 'spork' do
   watch('config/application.rb')
   watch('config/environment.rb')
@@ -20,6 +22,12 @@ guard 'rspec', :version => 2 do
   watch(%r{^spec/.+_spec\.rb$})
   watch(%r{^lib/(.+)\.rb$})     { |m| "spec/lib/#{m[1]}_spec.rb" }
   watch('spec/spec_helper.rb')  { "spec" }
+  watch(%r{^spec/factories/(.+)\.rb$}) do |m|
+    [
+      "spec/models/#{m[1].singularize}_spec.rb",
+      "spec/controllers/#{m[1].pluralize}_controller_spec.rb"
+    ]
+  end
 
   # Rails example
   watch(%r{^app/(.+)\.rb$})                           { |m| "spec/#{m[1]}_spec.rb" }
