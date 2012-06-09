@@ -16,8 +16,6 @@ group :test, :development do
   gem "rspec-rails"
   gem "auto_mock"
   gem "webrat"
-  gem "cover_me"
-  gem "libnotify"
   gem "guard-spork"
   gem "guard-rspec"
   gem "guard-rails"
