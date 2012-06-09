@@ -6,10 +6,9 @@
     = board_thread.title
   %td
     = link_to '[success]', board_thread
-    %a{href: "view.php?id={$thread.id|escape}&amp;cnt={$cnt[$thread.id].get}&amp;only=0,2"} [get?]
-    %a{href: "view.php?id={$thread.id|escape}&amp;cnt={$cnt[$thread.id].get}&amp;only=0,1,2"} [all]
+    = link_to '[queue]', [:queue, board_thread]
     = link_to '[thread]', board_thread.url
-  %td {$cnt[$thread.id].get|default:0}
-  %td {$cnt[$thread.id].queue|default:0}
+  %td= board_thread.image_urls.finished.count
+  %td= board_thread.image_urls.queued.count
   %td
     = board_thread.accessed_at || '---'

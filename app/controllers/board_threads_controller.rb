@@ -2,7 +2,7 @@ class BoardThreadsController < ApplicationController
   # GET /board_threads
   # GET /board_threads.json
   def index
-    @board_threads = BoardThread.all
+    @board_threads = BoardThread.all(:include => :image_urls)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -14,11 +14,19 @@ class BoardThreadsController < ApplicationController
   # GET /board_threads/1.json
   def show
     @board_thread = BoardThread.find(params[:id])
+    @type = :finished
 
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @board_thread }
     end
+  end
+
+  def queue
+    @board_thread = BoardThread.find(params[:id])
+    @type = :queued
+
+    render :show
   end
 
   # POST /board_threads

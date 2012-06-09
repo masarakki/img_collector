@@ -12,8 +12,8 @@
     %td ---
     %td
       %a{href: "img_list.php"} [success]
-    %td {$cnt.all.get}
+    %td= ImageUrl.finished.count
     %td
-      %a{href: "img_list.php?only=0"} {$cnt.all.queue}
+      %a{href: "img_list.php?only=0"}= ImageUrl.queued.count
     %td ---
   = render @board_threads

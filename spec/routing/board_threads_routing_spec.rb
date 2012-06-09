@@ -14,6 +14,10 @@ describe BoardThreadsController do
       get("/board_threads/1").should route_to("board_threads#show", :id => "1")
     end
 
+    it "routes to #queue" do
+      get("/board_threads/1/queue").should route_to("board_threads#queue", :id => "1")
+    end
+
     it "routes to #create" do
       post("/board_threads").should route_to("board_threads#create")
     end

@@ -4,7 +4,7 @@
   url:
   = link_to @board_thread.url
 
-- @board_thread.image_urls.each do |image_url|
+- @board_thread.image_urls.send(@type).each do |image_url|
   %p
     = "#{image_url.id}:"
     %strong

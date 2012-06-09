@@ -16,17 +16,37 @@ describe BoardThreadsController do
 
   describe "GET index" do
     it "assigns all board_threads as @board_threads" do
-      board_thread = BoardThread.create! valid_attributes
+      board_threads = FactoryGirl.create_list(:board_thread, 3)
       get :index
-      assigns(:board_threads).should eq([board_thread])
+      assigns(:board_threads).should == board_threads
     end
   end
 
   describe "GET show" do
+    before do
+      @board_thread = FactoryGirl.create(:board_thread)
+    end
     it "assigns the requested board_thread as @board_thread" do
-      board_thread = BoardThread.create! valid_attributes
-      get :show, :id => board_thread.id.to_s
-      assigns(:board_thread).should eq(board_thread)
+      get :show, :id => @board_thread.id
+      assigns(:board_thread).should == @board_thread
+    end
+    it "assign @type" do
+      get :show, :id => @board_thread.id
+      assigns(:type).should == :finished
+    end
+  end
+
+  describe "GET queue" do
+    before do
+      @board_thread = FactoryGirl.create(:board_thread)
+    end
+    it "assigns the requested board_thread as @board_thread" do
+      get :queue, :id => @board_thread.id
+      assigns(:board_thread).should == @board_thread
+    end
+    it "assign @type" do
+      get :queue, :id => @board_thread.id
+      assigns(:type).should == :queued
     end
   end
 
