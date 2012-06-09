@@ -1,4 +1,6 @@
 class BoardThread < ActiveRecord::Base
+  attr_accessible :title, :hostname, :board_key, :thread_key
+
   [:title, :hostname, :board_key, :thread_key].each do |key|
     validates key, presence: true
   end
