@@ -4,17 +4,10 @@ describe BoardThread do
   subject { @thread }
   let(:url) { "http://kilauea.bbspink.com/test/read.cgi/megami/1330282190/" }
   context :initialize do
-    before do
-      @thread = FactoryGirl.build(:board_thread, :thread_key => 1000000 )
-    end
+    before { @thread = FactoryGirl.build(:board_thread) }
 
     its(:valid?) { should be_true }
-    its(:dat_file) { should eq('http://kilauea.bbspink.com/megami/dat/1000000.dat') }
-
-    context :not_unique do
-      before { BoardThread.new(@thread.attributes).save }
-      its(:valid?) { should be_false }
-    end
+    its(:dat_file) { should == "http://kilauea.bbspink.com/megami/dat/#{@thread.thread_key}.dat" }
   end
 
   describe :accessible do
@@ -26,8 +19,9 @@ describe BoardThread do
   describe :instance_methods do
     describe :url= do
       before do
-        @thread = BoardThread.new
-        @thread.url = url
+        @thread = BoardThread.new do |b|
+          b.url = url
+        end
       end
 
       its(:hostname) { should == 'kilauea.bbspink.com' }
