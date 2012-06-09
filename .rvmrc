@@ -1,1 +1,1 @@
-rvm use --create 1.9.3@img_collector
+rvm use --create @img_collector
