@@ -25,8 +25,4 @@ production:
   reconnect: false
   password: ka8Cjasoiv9aU
   encoding: utf8
-  host: localhost
-
-  database:
-  pool: 5
-  timeout: 5000
+  host: 127.0.0.1
