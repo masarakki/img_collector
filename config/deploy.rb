@@ -1,6 +1,7 @@
 set :rvm_type, :user
 $:.unshift(File.expand_path('.lib', ENV['rvm_path']))
 require 'rvm/capistrano'
+require 'bundler/capistrano'
 
 set :application, "img_collector"
 set :repository, "git://github.com/masarakki/img_collector.git"
