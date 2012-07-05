@@ -19,7 +19,14 @@ test:
   timeout: 5000
 
 production:
-  adapter: sqlite3
-  database: db/production.sqlite3
+  adapter: mysql2
+  database: image_collector
+  username: image_collector
+  reconnect: false
+  password: ka8Cjasoiv9aU
+  encoding: utf8
+  host: localhost
+
+  database:
   pool: 5
   timeout: 5000
