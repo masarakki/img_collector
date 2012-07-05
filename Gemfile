@@ -6,6 +6,8 @@ gem 'twitter-bootstrap-rails'
 gem 'mona'
 gem 'curb'
 gem 'nokogiri'
+gem 'unicorn'
+gem 'jquery-rails'
 
 group :production do
   gem 'mysql2'
@@ -29,12 +31,12 @@ group :assets do
   gem 'uglifier'
 end
 
-gem 'jquery-rails'
-
-# Use unicorn as the web server
-# gem 'unicorn'
-
-gem 'capistrano'
+group :development do
+  gem 'capistrano'
+  gem 'capistrano_colors'
+  gem 'capistrano-unicorn'
+  gem 'rvm-capistrano'
+end
 
 group :test do
   gem 'turn', :require => false
