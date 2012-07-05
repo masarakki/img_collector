@@ -8,7 +8,7 @@ gem 'curb'
 gem 'nokogiri'
 gem 'unicorn'
 gem 'jquery-rails'
-
+gem 'libv8', '3.11.8.2'
 group :production do
   gem 'mysql2'
 end
