@@ -10,7 +10,7 @@ class CreateBoardThreads < ActiveRecord::Migration
       t.integer :res_num, default: 0
       t.integer :new_res, default: 0
       t.string :last_modified, default: ''
-      t.datetime :accessed_at, default: ''
+      t.datetime :accessed_at, default: nil
       t.timestamps
     end
     add_index :board_threads, [:hostname, :board_key, :thread_key], :unique => true, :name => 'thread_index'
