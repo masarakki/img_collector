@@ -7,17 +7,18 @@ gem 'mona'
 gem 'curb'
 gem 'nokogiri'
 gem 'unicorn'
+gem 'twitter-bootstrap-rails'
 
 group :production do
   gem 'mysql2'
 end
 
-group :development do
-  gem 'twitter-bootstrap-rails'
-  gem 'capistrano'
-  gem 'capistrano_colors'
-  gem 'capistrano-unicorn'
-  gem 'rvm-capistrano'
+group :assets do
+  gem 'sass-rails'
+  gem 'coffee-rails'
+  gem 'uglifier'
+  gem 'less-rails'
+  gem 'therubyracer'
 end
 
 group :test do
@@ -33,11 +34,18 @@ group :test, :development do
   gem "guard-rspec"
   gem "guard-rails"
   gem 'factory_girl_rails'
+
+  gem "rb-inotify", :require => false
+  gem "rb-fsevent", :require => false
+  gem "rb-fchange", :require => false
+
+  gem "growl", :require => false
+  gem "libnotify", :require => false
 end
 
-group :assets do
-  gem 'sass-rails'
-  gem 'coffee-rails'
-  gem 'uglifier'
+group :development do
+  gem 'capistrano'
+  gem 'capistrano_colors'
+  gem 'capistrano-unicorn'
+  gem 'rvm-capistrano'
 end
-
